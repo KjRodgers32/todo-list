@@ -1,8 +1,13 @@
-const express = require("express");
-const expressApp = express();
+var express = require("express");
+var app = express();
 const cors = require("cors");
+var taskController = require("./controllers/taskController");
 
-expressApp.use(express.json());
-expressApp.use(cors());
+// Middleware configuration
+app.use(express.json());
+app.use(cors());
 
-module.exports = expressApp;
+// Routes
+app.use("/tasks", taskController);
+
+module.exports = app;
